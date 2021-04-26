@@ -1,5 +1,5 @@
 # netbian_spider
 
 ## 说明
-    1、只需要修改代码中的 target_url 成为你想要爬取的分类图片即可，没有开启多线程，毕竟可以拿到图片就好了，不要给服务器太大压力
-    2、附上彼岸桌面地址：https://pic.netbian.com
+    1、运行exe程序，输入需要爬取的图片分类，示例王者荣耀分类：http://www.netbian.com/s/wangzherongyao/
+    2、[附上彼岸桌面地址](https://pic.netbian.com)

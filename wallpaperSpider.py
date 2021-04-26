@@ -10,13 +10,22 @@ from bs4 import BeautifulSoup
 """
 
 # 创建保存目录
-save_dir = '王者荣耀壁纸'
+save_dir = '壁纸'
 if save_dir not in os.listdir('./'):
     os.mkdir(save_dir)
 
-target_url = "https://pic.netbian.com/4kmeinv/index.html"
+target_url = input("请输入图片分类网址：")
 
-c = dict(__cfduid='d4b73ec234787152ae681aef0113bea321618457455',Hm_lvt_14b14198b6e26157b7eba06b390ab763='1618457452',zkhanecookieclassrecord='%2C54%2C',Hm_lpvt_14b14198b6e26157b7eba06b390ab763='1618749416',Hm_lvt_526caf4e20c21f06a4e9209712d6a20e='1618583922,1618745706,1618750172',PHPSESSID='2af8ojr6ti1b3jlqs4vicfleh2',zkhanmlusername='qq354664161875',zkhanmluserid='4824094',zkhanmlgroupid='1',zkhanmlrnd='7j9RuoV6LUQLkZslHyqY',zkhanmlauth='1afc4f259e27fb09b6dc585d39b762fd',Hm_lpvt_526caf4e20c21f06a4e9209712d6a20e='1618751363',zkhandownid27244='1')
+print(target_url)
+if len(target_url) == 0:
+    target_url = "http://www.netbian.com/s/wangzherongyao/"
+
+c = dict(__cfduid='d4b73ec234787152ae681aef0113bea321618457455', Hm_lvt_14b14198b6e26157b7eba06b390ab763='1618457452',
+         zkhanecookieclassrecord='%2C54%2C', Hm_lpvt_14b14198b6e26157b7eba06b390ab763='1618749416',
+         Hm_lvt_526caf4e20c21f06a4e9209712d6a20e='1618583922,1618745706,1618750172',
+         PHPSESSID='2af8ojr6ti1b3jlqs4vicfleh2', zkhanmlusername='qq354664161875', zkhanmluserid='4824094',
+         zkhanmlgroupid='1', zkhanmlrnd='7j9RuoV6LUQLkZslHyqY', zkhanmlauth='1afc4f259e27fb09b6dc585d39b762fd',
+         Hm_lpvt_526caf4e20c21f06a4e9209712d6a20e='1618751363', zkhandownid27244='1')
 
 flag = True
 while flag:
@@ -25,7 +34,6 @@ while flag:
     r = requests.get(url=target_url, cookies=c)
 
     print(r.content)
-    exit('测试')
 
     bs = BeautifulSoup(r.content, 'lxml')
 
@@ -33,7 +41,6 @@ while flag:
 
     pages = bs.find_all('a', class_="prev")
 
-    # cartoon_list = list_con_li.find_all('img')
     cartoon_list = list_con_li.find_all('a')
 
     chapter_names = []
@@ -67,6 +74,4 @@ while flag:
         print(title, im_url)
         if im_url.find('http') == -1:
             continue
-        if title.find('2014巴西世界杯32强球衣足球宝贝') != -1:
-            title = '2014巴西世界杯32强球衣足球宝贝,大尺度美女桌面壁纸.jpg'
-        urlretrieve(im_url, "D:\girls\\" + title + im_url[-4:])
+        urlretrieve(im_url, os.getcwd() + "\\壁纸\\" + title + im_url[-4:])
